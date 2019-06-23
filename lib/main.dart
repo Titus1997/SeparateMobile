@@ -75,34 +75,66 @@ class _MyLoginPageState extends State<MyLoginPage> with SingleTickerProviderStat
 
 
     final getDrumsButton = Padding(
-        padding: EdgeInsets.symmetric(vertical: 6.0),
+        padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 6.0),
         child:  RaisedButton(
-            child: Text('Get Drums Audio', style: TextStyle(color: Colors.white)),
+            child: Column(
+              children: <Widget>[
+                Container(
+                    margin: EdgeInsets.symmetric(vertical: 10.0),
+                    height: 40,
+                    width: 40,
+                    child: Hero(
+                      tag: 'hero',
+                      child: Image.asset('assets/drums.png'),
+
+                    )
+                ),
+                Text('Get Drums Audio', style: TextStyle(color: Colors.black)),
+              ],
+            ),
             onPressed: () {
               sendDrum();
             },
             color: Colors.lightBlueAccent,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0))
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2.0))
         )
     );
     final getVocalsButton = Padding(
-        padding: EdgeInsets.symmetric(vertical: 6.0),
+        padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 6.0),
         child:  RaisedButton(
-            child: Text('Get Vocals Audio', style: TextStyle(color: Colors.white)),
+            child: Column(
+              children: <Widget>[
+                Container(
+                    margin: EdgeInsets.symmetric(vertical: 10.0),
+                    height: 40,
+                    width: 40,
+                    child: Hero(
+                      tag: 'hero',
+                      child: Image.asset('assets/vocals.png'),
+
+                    )
+                ),
+                Text('Get Vocals Audio', style: TextStyle(color: Colors.black)),
+              ],
+            ),
             onPressed: () {
               sendVocals();
             },
             color: Colors.lightBlueAccent,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0))
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2.0))
         )
     );
 
     final getAudioFile = Padding(
-        padding: EdgeInsets.symmetric(vertical: 6.0),
+        padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 6.0),
         child: RaisedButton(
-            child: Text('select the audio file', style: TextStyle(color: Colors.white)),
+            child: Column(
+              children: <Widget>[
+                Text('select the audio file', style: TextStyle(color: Colors.white)),
+              ],
+            ),
             onPressed: (){ selectFile(); },
-            color: Colors.lightGreenAccent,
+            color: Colors.black26,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0))
         )
     );
@@ -132,29 +164,31 @@ class _MyLoginPageState extends State<MyLoginPage> with SingleTickerProviderStat
             shrinkWrap: true,
             padding: EdgeInsets.only(left: 24.0, right: 24.0),
             children: <Widget>[
+              Center(
+              child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                  height: 80,
+                  width: 80,
+                  child: Hero(
+                    tag: 'hero',
+                    child: Image.asset('assets/hero.png'),
+
+                  )
+              ),
+            ),
             TextField(
             controller: controller,
           ),
               getAudioFile,
-              Center(
-                child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 10.0),
-                    height: 60,
-                    width: 60,
-                    child: Hero(
-                      tag: 'hero',
-                      child: CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        radius: 48.0,
-                        child: Image.asset('assets/hero.png'),
-                      ),
-                    )
-                ),
-              ),
+
               SizedBox(height: 8.0),
               SizedBox(height: 24.0),
-              getDrumsButton,
-              getVocalsButton
+              Row(
+                children: <Widget>[
+                  getDrumsButton,
+                  getVocalsButton,
+                ],
+              )
             ],
           ),
           ),
